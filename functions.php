@@ -50,6 +50,7 @@ function ato_page_tree()
 
         $nodes = [];
         $rows = $pages->getRows($pages->getChildIds((int) $parentId));
+        if(!empty($rows)){
         foreach ($rows as $row) {
             $cid = isset($row['cid']) ? (int) $row['cid'] : 0;
             if ($cid < 1 || isset($visited[$cid])) {
@@ -75,7 +76,7 @@ function ato_page_tree()
                 'descendantIds' => array_values(array_unique($descendantIds)),
             ];
         }
-
+        }
         return $nodes;
     };
 
